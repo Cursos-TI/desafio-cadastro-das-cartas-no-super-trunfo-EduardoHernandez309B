@@ -5,13 +5,14 @@
 // Este programa cadastra duas cartas do jogo Super Trunfo (cidades),
 // lendo dados do usuário e exibindo-os de forma organizada.
 
-int main() {
+int main()
+{
     // -------------------------
     // Declaração das variáveis da Carta 1
     // -------------------------
-    char estado1;              
-    char codigo1[4];           
-    char cidade1[50];          
+    char estado1;
+    char codigo1[4];
+    char cidade1[50];
     int populacao1;
     float area1;
     float pib1;
@@ -81,6 +82,16 @@ int main() {
     scanf("%d", &pontosTuristicos2);
 
     // -------------------------
+    // Cálculo de Densidade demográfica e PIB per capita carta 1 e 2
+    // -------------------------
+
+    float densidadeDemografica1 = populacao1 / area1;
+    float densidadeDemografica2 = populacao2 / area2;
+
+    float pibPerCapita1 = pib1 / populacao1;
+    float pibPerCapita2 = pib2 / populacao2;
+
+    // -------------------------
     // Exibição das Cartas
     // -------------------------
     printf("\n=== CARTA 1 ===\n");
@@ -91,6 +102,8 @@ int main() {
     printf("Area: %.2f km²\n", area1);
     printf("PIB: %.2f bilhoes de reais\n", pib1);
     printf("Numero de Pontos Turisticos: %d\n", pontosTuristicos1);
+    printf("Densidade Demográfica: %.2f Habitantes/Km²\n", densidadeDemografica1);
+    printf("PIB per capita: %f\n", pibPerCapita1);
 
     printf("\n=== CARTA 2 ===\n");
     printf("Estado: %c\n", estado2);
@@ -100,6 +113,29 @@ int main() {
     printf("Area: %.2f km²\n", area2);
     printf("PIB: %.2f bilhoes de reais\n", pib2);
     printf("Numero de Pontos Turisticos: %d\n", pontosTuristicos2);
+    printf("Densidade Demográfica: %.2f Habitantes/Km²\n", densidadeDemografica2);
+    printf("PIB per capita: %f\n", pibPerCapita2);
+
+    // -------------------------
+    // Comparação de cartas
+    // -------------------------
+
+    printf("\nComparação de cartas (Atributo: População)\n");
+    printf("Carta 1 - %s: %d\n", cidade1, populacao1);
+    printf("Carta 2 - %s: %d\n", cidade2, populacao2);
+
+    if (populacao1 > populacao2)
+    {
+        printf("Resultado: Carta 1 (%s) venceu!\n", cidade1);
+    }
+    else if (populacao2 > populacao1)
+    {
+        printf("Resultado: Carta 2 (%s) venceu!\n", cidade2);
+    }
+    else
+    {
+        printf("Resultado: Empate!\n");
+    }
 
     return 0;
 }
